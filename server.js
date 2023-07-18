@@ -1,20 +1,33 @@
-// Import Dependencies
-const express = require("express");
-const cors = require("cors");
+// Import Dependencies:
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan'); 
+const mongoose = require('mongoose');
 
-// Create our app object
+// Import Pixsly:
+const { DATABASE_URL, PORT } = require('./config');
+const pixslysRouter = require('./Routers/pixslysRouter');
+
+// Create App object:
 const app = express();
 
-// set up middleware
+// Set up middleware:
 app.use(cors());
+app.use(morgan("tiny"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//home route for testing our app
-app.get("/", (req, res) => {
-  res.send("Hello World");
+app.use('/pixslys', pixslysRouter)
+
+// Home route for testing our app:
+app.get('/', (req, res) => {
+    res.send('Hit Default Route!')
 });
 
-//declare a variable for our port number
-const PORT = process.env.PORT || 4000;
-
-// turn on the server listener
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+// Listener
+mongoose.connect(DATABASE_URL).then(() => {
+    console.log('Connected to mongoDB')
+    app.listen(PORT, () => {
+      console.log(`Listening on port ${PORT}`);
+    });
+  });

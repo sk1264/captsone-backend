@@ -1,0 +1,7 @@
+{
+    "env": {
+        "DB_USER": "sk1264",
+        "DB_PASSWORD": "ramennoodles34",
+        "JWT_KEY_SECRET": "harry_potter_rules"
+    }
+}

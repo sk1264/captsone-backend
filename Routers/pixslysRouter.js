@@ -1,7 +1,8 @@
 const express = require('express');
 const { Pixsly } = require('../models/pixsly');
 const router = express.Router();
-const mongoose = require('mongoose');
+const pixslyData = require('../models/pixslyData.json');
+// const mongoose = require('mongoose');
 
 router.get('/', async (req, res) => {
     res.json(await Pixsly.find({})).status(200);
@@ -10,7 +11,7 @@ router.get('/', async (req, res) => {
 router.get('/seed', async (req, res) => {
     await Pixsly.deleteMany({});
     await Pixsly.create(pixslyData);
-    res.redirect('/pixsly')
+    res.redirect('/pixslys')
 })
 
 router.get('/:id', async (req, res) => {

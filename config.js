@@ -1,4 +1,4 @@
-const DATABASE_URL = `mongodb+srv://sk1264:Balderdash1!@sei.uiuevhe.mongodb.net/?retryWrites=true&w=majority`
+const DATABASE_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@sei.uiuevhe.mongodb.net/pixsly?retryWrites=true&w=majority`
 
 "use strict";
 
@@ -12,3 +12,5 @@ module.exports = {
   PORT,
   JWT_KEY_SECRET,
 };
+
+// //⚠️***NOTE: IF YOU CHANGE ENVIRONMENT VARIABLES, YOU ****MUST***** RESTART SERVER EVEN IF USING NODEMON⚠️

@@ -1,11 +1,11 @@
 const { mongoose } = require('mongoose')
 
-const pixslySchema = new mongoose.Schema({
+const pixslysSchema = new mongoose.Schema({
     name: String,
     image: String,
-    description: String,
+    description: String
 })
 
-const Pixsly = mongoose.model('Pixsly', pixslySchema, 'pixsly')
+const Pixsly = mongoose.model('Pixsly', pixslysSchema, 'pixslys')
 
 module.exports = {Pixsly};
