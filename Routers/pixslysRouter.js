@@ -5,8 +5,10 @@ const pixslyData = require('../models/pixslyData.json');
 // const mongoose = require('mongoose');
 
 router.get('/', async (req, res) => {
-    res.json(await Pixsly.find({})).status(200);
-})
+    const data = await Pixsly.find({});
+    console.log(data); // Add this line
+    res.json(data).status(200);
+  });
 
 router.get('/seed', async (req, res) => {
     await Pixsly.deleteMany({});
