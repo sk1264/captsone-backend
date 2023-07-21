@@ -2,6 +2,7 @@
     "env": {
         "DB_USER": "sk1264",
         "DB_PASSWORD": "ramennoodles34",
-        "JWT_KEY_SECRET": "harry_potter_rules"
+        "JWT_KEY_SECRET": "harry_potter_rules",
+        "IMGBB_API_KEY": "2ebc72bcc7f50020878a9ea327a0b05a"
     }
 }

@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 // Import Pixsly:
 const { DATABASE_URL, PORT } = require('./config');
 const pixslysRouter = require('./Routers/pixslysRouter');
+const bodyParser = require('body-parser');
 
 // Create App object:
 const app = express();
@@ -14,8 +15,10 @@ const app = express();
 // Set up middleware:
 app.use(cors());
 app.use(morgan("tiny"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+app.use(bodyParser.json({ limit: "200mb" })); 
+app.use(express.urlencoded({ limit: "200mb", extended: false }));
+// app.use(express.urlencoded({ extended: true }));
 
 app.use('/pixslys', pixslysRouter)
 
