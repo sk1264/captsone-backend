@@ -4,7 +4,6 @@ const router = express.Router();
 const pixslyData = require('../models/pixslyData.json');
 const imgbbUploader = require("imgbb-uploader");
 const { IMGBB_API_KEY } = require('../config');
-// const mongoose = require('mongoose');
 
 router.get('/', async (req, res) => {
     const data = await Pixsly.find({});
@@ -34,10 +33,6 @@ router.post('/', async (req, res) => {
     }
     res.json(await Pixsly.create(newPixsly))
 })
-
-// router.put('/:id', async (req, res) => {
-//     res.json(await Pixsly.findByIdAndUpdate(req.params.id, req.body, {new: true}))
-// })
 
 router.put("/:id", async (req, res, next) => {
     console.log("updating space");
